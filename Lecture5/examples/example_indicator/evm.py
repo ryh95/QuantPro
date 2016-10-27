@@ -1,10 +1,10 @@
 # Load the necessary packages and modules
-import pandas as pd
-# import pandas.io.data as web
 import matplotlib.pyplot as plt
+import pandas as pd
 from pandas_datareader import data as web
-from Lecture5.technique_indicators.indicators import EVM
- 
+
+from Lecture5.tools.indicators import EVM
+
 # Retrieve the AAPL data from Yahoo finance:
 data = web.DataReader('AAPL',data_source='yahoo',start='1/1/2015', end='1/1/2016')
 data = pd.DataFrame(data)

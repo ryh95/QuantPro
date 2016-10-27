@@ -1,11 +1,11 @@
 # Rate of Change code
 
 # Load the necessary packages and modules
-import pandas as pd
-# import pandas.io.data as web
-from pandas_datareader import data as  web
 import matplotlib.pyplot as plt
-from Lecture5.technique_indicators.indicators import ROC
+import pandas as pd
+from pandas_datareader import data as  web
+
+from Lecture5.tools.indicators import ROC
 
 # Retrieve the NIFTY data from Yahoo finance:
 data = web.DataReader('^NSEI',data_source='yahoo',start='6/1/2015',end='1/1/2016')

@@ -1,9 +1,9 @@
 # Load the necessary packages and modules
-import pandas as pd
-# import pandas.io.data as web
 import matplotlib.pyplot as plt
+import pandas as pd
 from pandas_datareader import data as web
-from Lecture5.technique_indicators.indicators import CCI
+
+from Lecture5.tools.indicators import CCI
 
 # Retrieve the Nifty data from Yahoo finance:
 data = web.DataReader('^NSEI',data_source='yahoo',start='1/1/2014', end='1/1/2016')
