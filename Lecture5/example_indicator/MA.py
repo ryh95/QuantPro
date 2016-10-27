@@ -5,7 +5,7 @@ import pandas as pd
 # import pandas.io.data as web
 from pandas_datareader import data as web
 import matplotlib.pyplot as plt
-from Lecture5.technique_indicators import ma
+from Lecture5.technique_indicators.indicators import SMA,EWMA
 
 # Retrieve the Nifty data from Yahoo finance:
 data = web.DataReader('^NSEI',data_source='yahoo',start='1/1/2013', end='1/1/2016')
@@ -14,13 +14,13 @@ close = data['Close']
 
 # Compute the 50-day SMA for NIFTY
 n = 50
-SMA_NIFTY = ma.SMA(data, n)
+SMA_NIFTY = SMA(data, n)
 SMA_NIFTY = SMA_NIFTY.dropna()
 SMA = SMA_NIFTY['SMA_50']
 
 # Compute the 200-day EWMA for NIFTY
 ew = 200
-EWMA_NIFTY = ma.EWMA(data, ew)
+EWMA_NIFTY = EWMA(data, ew)
 EWMA_NIFTY = EWMA_NIFTY.dropna()
 EWMA = EWMA_NIFTY['EWMA_200']
 
