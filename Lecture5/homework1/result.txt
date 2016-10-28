@@ -1,46 +1,46 @@
-SVC(C=1000, cache_size=200, class_weight=None, coef0=0.0,
+SVC(C=1, cache_size=200, class_weight=None, coef0=0.0,
   decision_function_shape=None, degree=3, gamma=0.001, kernel='rbf',
   max_iter=-1, probability=False, random_state=2, shrinking=True,
   tol=0.001, verbose=False)
-0.838173634234
+-0.94623655914
 Confusion matrix, without normalization
-[[79  5]
- [ 2 94]]
+[[ 0 88]
+ [ 0 93]]
 RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
-            max_depth=1, max_features='auto', max_leaf_nodes=None,
+            max_depth=2, max_features='auto', max_leaf_nodes=None,
             min_impurity_split=1e-07, min_samples_leaf=1,
             min_samples_split=2, min_weight_fraction_leaf=0.0,
-            n_estimators=20, n_jobs=4, oob_score=False, random_state=2,
+            n_estimators=10, n_jobs=4, oob_score=False, random_state=2,
             verbose=0, warm_start=False)
-0.994419780491
+-1.10105083089
 Confusion matrix, without normalization
-[[84  0]
- [ 0 96]]
-1. feature 6 (0.250000)
-2. feature 5 (0.150000)
-3. feature 18 (0.100000)
-4. feature 27 (0.050000)
-5. feature 12 (0.050000)
-6. feature 26 (0.050000)
-7. feature 7 (0.050000)
-8. feature 4 (0.050000)
-9. feature 20 (0.050000)
-10. feature 22 (0.050000)
-11. feature 2 (0.050000)
-12. feature 1 (0.050000)
-13. feature 25 (0.050000)
-14. feature 10 (0.000000)
-15. feature 3 (0.000000)
-16. feature 8 (0.000000)
-17. feature 9 (0.000000)
-18. feature 13 (0.000000)
-19. feature 11 (0.000000)
-20. feature 14 (0.000000)
-21. feature 15 (0.000000)
-22. feature 16 (0.000000)
+[[12 76]
+ [19 74]]
+1. feature 20 (0.158509)
+2. feature 12 (0.111979)
+3. feature 6 (0.104875)
+4. feature 11 (0.083657)
+5. feature 21 (0.080025)
+6. feature 7 (0.074258)
+7. feature 5 (0.059561)
+8. feature 22 (0.045209)
+9. feature 26 (0.038630)
+10. feature 14 (0.034264)
+11. feature 2 (0.032292)
+12. feature 27 (0.030468)
+13. feature 16 (0.029623)
+14. feature 24 (0.029563)
+15. feature 18 (0.028611)
+16. feature 4 (0.025878)
+17. feature 0 (0.020441)
+18. feature 1 (0.012158)
+19. feature 10 (0.000000)
+20. feature 9 (0.000000)
+21. feature 8 (0.000000)
+22. feature 15 (0.000000)
 23. feature 17 (0.000000)
 24. feature 19 (0.000000)
-25. feature 21 (0.000000)
-26. feature 23 (0.000000)
-27. feature 24 (0.000000)
-28. feature 0 (0.000000)
+25. feature 23 (0.000000)
+26. feature 3 (0.000000)
+27. feature 25 (0.000000)
+28. feature 13 (0.000000)

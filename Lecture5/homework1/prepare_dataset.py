@@ -39,5 +39,7 @@ df_norm = (df - df.mean()) / (df.max() - df.min())
 
 # add direction as target value
 df_norm['direction'] = np.sign(df['return'])
+df_norm['direction'] = df_norm['direction'].shift(-1)
+df_norm.dropna(inplace=True)
 
 df_norm.to_csv('hs300_dataset.csv')
