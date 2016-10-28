@@ -1,3 +1,4 @@
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -5,7 +6,7 @@ from sklearn.metrics import r2_score
 
 from Lecture5.tools.model import get_tuned_svr, get_tuned_random_forest_regressor
 
-df = pd.read_csv('./data/hs300_dataset.csv')
+df = pd.read_csv('./data/dataset.csv')
 
 df.index = pd.to_datetime(df['date'])
 df.drop('date',axis=1,inplace=True)

@@ -3,10 +3,9 @@ import pandas as pd
 
 from Lecture5.tools.indicators import EWMA ,ROC, CCI,ForceIndex
 
-df = pd.read_csv('hs300.csv')
-
 # # create features
 def create_features(df,lags=5):
+
     X = df.set_index(df['date'])
     X.sort_values(by='date',inplace=True)
     X.drop('date',axis=1,inplace=True)
@@ -32,6 +31,10 @@ def create_features(df,lags=5):
 
     return X
 
-df = create_features(df)
+if __name__ == '__main__':
 
-df.to_csv('hs300_dataset.csv')
+    df = pd.read_csv('hs300.csv')
+
+    df = create_features(df)
+
+    df.to_csv('hs300_dataset.csv')

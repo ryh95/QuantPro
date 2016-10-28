@@ -1,0 +1,39 @@
+SVR(C=1000, cache_size=200, coef0=0.0, degree=3, epsilon=0.1, gamma=0.0001,
+  kernel='rbf', max_iter=-1, shrinking=True, tol=0.001, verbose=False)
+0.916187776417
+RandomForestRegressor(bootstrap=True, criterion='mse', max_depth=3,
+           max_features='auto', max_leaf_nodes=None,
+           min_impurity_split=1e-07, min_samples_leaf=1,
+           min_samples_split=2, min_weight_fraction_leaf=0.0,
+           n_estimators=20, n_jobs=-1, oob_score=False, random_state=42,
+           verbose=0, warm_start=False)
+0.939198601023
+1. feature 2 (0.581998)
+2. feature 3 (0.252763)
+3. feature 1 (0.111403)
+4. feature 0 (0.034688)
+5. feature 16 (0.009534)
+6. feature 11 (0.005667)
+7. feature 12 (0.002653)
+8. feature 25 (0.000771)
+9. feature 14 (0.000523)
+10. feature 19 (0.000000)
+11. feature 18 (0.000000)
+12. feature 26 (0.000000)
+13. feature 24 (0.000000)
+14. feature 23 (0.000000)
+15. feature 4 (0.000000)
+16. feature 5 (0.000000)
+17. feature 6 (0.000000)
+18. feature 7 (0.000000)
+19. feature 8 (0.000000)
+20. feature 9 (0.000000)
+21. feature 10 (0.000000)
+22. feature 22 (0.000000)
+23. feature 21 (0.000000)
+24. feature 13 (0.000000)
+25. feature 27 (0.000000)
+26. feature 15 (0.000000)
+27. feature 20 (0.000000)
+28. feature 17 (0.000000)
+29. feature 28 (0.000000)

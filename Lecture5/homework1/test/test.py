@@ -1,11 +1,12 @@
+import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import r2_score
 from sklearn.model_selection import train_test_split
-import matplotlib.pyplot as plt
-from Lecture5.homework1.model import get_tuned_random_forest_classifier
+
+from Lecture5.tools.model import get_tuned_random_forest_classifier
 from Lecture5.tools.plot_confusion import plot_confusion_matrix
-import numpy as np
 
 df = pd.read_csv('hs300_dataset.csv')
 
