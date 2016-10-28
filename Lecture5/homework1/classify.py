@@ -5,10 +5,18 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import numpy as np
 
-from Lecture5.homework1.model import get_tuned_svc, get_tuned_random_forest
+from Lecture5.homework1.model import get_tuned_svc, get_tuned_random_forest_classifier
 from Lecture5.tools.plot_confusion import plot_confusion_matrix
 
 df = pd.read_csv('hs300_dataset.csv')
+
+# feature rescale
+df = (df - df.mean()) / (df.max() - df.min())
+
+# add direction as target value
+df['direction'] = np.sign(df['return'])
+df['direction'] = df['direction'].shift(-1)
+df.dropna(inplace=True)
 
 df.index = pd.to_datetime(df['date'])
 df.drop('date',axis=1,inplace=True)
@@ -33,7 +41,7 @@ plt.show()
 
 
 
-best_rf = get_tuned_random_forest(X_train, y_train)
+best_rf = get_tuned_random_forest_classifier(X_train, y_train)
 # score the model
 y_pred = best_rf.predict(X_test)
 print best_rf

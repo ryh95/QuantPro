@@ -3,7 +3,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn.metrics import r2_score
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
-from Lecture5.homework1.model import get_tuned_random_forest
+from Lecture5.homework1.model import get_tuned_random_forest_classifier
 from Lecture5.tools.plot_confusion import plot_confusion_matrix
 import numpy as np
 
@@ -17,7 +17,7 @@ y = df['direction']
 # split data set
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25,random_state=42)
 
-best_rf = get_tuned_random_forest(X_train, y_train)
+best_rf = get_tuned_random_forest_classifier(X_train, y_train)
 # score the model
 y_pred = best_rf.predict(X_test)
 print best_rf
