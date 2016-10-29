@@ -3,9 +3,10 @@
 import pandas as pd
 import numpy as np
 import xgboost
+from matplotlib import pyplot
 from sklearn.metrics import r2_score
 
-from Lecture5.tools.plot_learning_curve import plot_learning_curve
+from xgboost import plot_importance
 
 df = pd.read_csv('./data/HFT_XY_unselected.csv') #从readme.txt中下载
 col_names_x = df.columns[1:333]
@@ -44,6 +45,10 @@ print("Accuracy: %.2f" % (accuracy * 100.0))
 ###########################################
 # Todo:plot learning curve
 
+###########################################
+# plot feature importance
+plot_importance(model)
+pyplot.show()
 
 ###########################################
 #Now let's Learn some benchmark models...
