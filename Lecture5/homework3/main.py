@@ -31,6 +31,9 @@ print y_all.shape
 # from sklearn.preprocessing import minmax_scale
 # minmax_scale(x_all,copy=False)
 
+# from scipy import stats
+# x_all = stats.boxcox(x_all)
+
 train_x = x_all[0:x_all.shape[0]*7/10]
 train_y = y_all[0:y_all.shape[0]*7/10]
 test_x = x_all[x_all.shape[0]*7/10:]
@@ -45,7 +48,7 @@ print test_y.shape
 
 # fit model with training data
 
-model = xgb.XGBRegressor(n_estimators=4000,learning_rate=0.07,max_depth=4,gamma=0.1,subsample=0.9,colsample_bytree=0.4)
+# model = xgb.XGBRegressor(n_estimators=4000,learning_rate=0.07,max_depth=4,gamma=0.1,subsample=0.9,colsample_bytree=0.3)
 
 # min_child_weight = [0,1,2,3,4,5]
 # param_grid = dict(min_child_weight=min_child_weight)
@@ -64,14 +67,15 @@ model = xgb.XGBRegressor(n_estimators=4000,learning_rate=0.07,max_depth=4,gamma=
 # 	stdevs.append(stdev)
 # 	print("%f (%f) with: %r" % (mean_score, stdev, params))
 #
-eval_set = [(train_x,train_y),(test_x,test_y)]
-model.fit(train_x, train_y,eval_metric="logloss", eval_set=eval_set, verbose=True,early_stopping_rounds=15)
-
-# make predictions for test data
-y_pred = model.predict(test_x)
-# evaluate predictions
-accuracy = r2_score(test_y, y_pred)
-print("Accuracy: %.2f" % (accuracy * 100.0))
+# eval_set = [(train_x,train_y),(test_x,test_y)]
+# model.fit(train_x, train_y,eval_metric="logloss", eval_set=eval_set, verbose=True,early_stopping_rounds=15)
+#
+# # make predictions for test data
+# y_pred = model.predict(test_x)
+# # evaluate predictions
+# accuracy = r2_score(test_y, y_pred)
+# # 6.65
+# print("Accuracy: %.2f" % (accuracy * 100.0))
 
 # Todo:plot learning curve
 
@@ -180,3 +184,11 @@ from sklearn import linear_model
 # # 2...
 # print("Accuracy: %.2f (for RandomForest)" % (r2_score(test_y,pred_rand_forest) * 100.0))
 
+###########################################
+# try decision tree
+from sklearn import tree
+
+dis_tree = tree.DecisionTreeRegressor(random_state=2,min_samples_split=5500,min_samples_leaf=80)
+pred_dis_tree = dis_tree.fit(train_x,train_y).predict(test_x)
+# 3.78
+print("Accuracy: %.2f (for RandomForest)" % (r2_score(test_y,pred_dis_tree) * 100.0))
