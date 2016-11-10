@@ -120,7 +120,7 @@ class HistoricCSVDataHandler(DataHandler):
         comb_index = None
         for s in self.symbol_list:
             # Load the CSV file with no header information, indexed on date
-            self.symbol_data[s] = pd.io.parsers.read_csv(
+            self.symbol_data[s] = pd.read_csv(
                 os.path.join(self.csv_dir, '%s.csv' % s),
                 header=0, index_col=0, parse_dates=True,
                 names=[
@@ -140,8 +140,7 @@ class HistoricCSVDataHandler(DataHandler):
 
         # Reindex the dataframes
         for s in self.symbol_list:
-            self.symbol_data[s] = self.symbol_data[s].\
-                reindex(index=comb_index, method='pad').iterrows()
+            self.symbol_data[s] = self.symbol_data[s].reindex(index=comb_index, method='pad').iterrows()
 
     def _get_new_bar(self, symbol):
         """
