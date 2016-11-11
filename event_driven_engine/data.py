@@ -99,10 +99,14 @@ class HistoricCSVDataHandler(DataHandler):
         symbol_list - A list of symbol strings.
         """
         self.events = events
+        # 指定股票csv数据所在的目录
         self.csv_dir = csv_dir
+        # 指定要加载的股票的代码，后面会根据它来加载数据到symbol_data中
         self.symbol_list = symbol_list
 
+        # 存储股票代码和其对应数据的iterator
         self.symbol_data = {}
+        # Todo:latest_symbol_data用来干嘛？和symbol_data区别
         self.latest_symbol_data = {}
         self.continue_backtest = True       
         self.bar_index = 0
@@ -117,6 +121,9 @@ class HistoricCSVDataHandler(DataHandler):
         For this handler it will be assumed that the data is
         taken from Yahoo. Thus its format will be respected.
         """
+        # 这个内部函数用于将symbol_list里面的股票代码对应的csv数据加载到symbol_data中，然后以iterator形式赋值给symbol_data
+        #
+        # Todo:comb_index 用来干嘛？
         comb_index = None
         for s in self.symbol_list:
             # Load the CSV file with no header information, indexed on date
@@ -153,6 +160,7 @@ class HistoricCSVDataHandler(DataHandler):
         """
         Returns the last bar from the latest_symbol list.
         """
+        # 获得对应股票的倒数1个的latest_symbol_data
         try:
             bars_list = self.latest_symbol_data[symbol]
         except KeyError:
@@ -166,6 +174,7 @@ class HistoricCSVDataHandler(DataHandler):
         Returns the last N bars from the latest_symbol list,
         or N-k if less available.
         """
+        # 获得对应股票的倒数N个的latest_symbol_data
         try:
             bars_list = self.latest_symbol_data[symbol]
         except KeyError:
@@ -178,6 +187,7 @@ class HistoricCSVDataHandler(DataHandler):
         """
         Returns a Python datetime object for the last bar.
         """
+        # 获得对应股票的倒数1个的latest_symbol_data的时间
         try:
             bars_list = self.latest_symbol_data[symbol]
         except KeyError:
@@ -191,6 +201,7 @@ class HistoricCSVDataHandler(DataHandler):
         Returns one of the Open, High, Low, Close, Volume or OI
         values from the pandas Bar series object.
         """
+        # 将指定股票的latest_symbol_data中的最后一行指定val_type的值返回
         try:
             bars_list = self.latest_symbol_data[symbol]
         except KeyError:
@@ -204,6 +215,7 @@ class HistoricCSVDataHandler(DataHandler):
         Returns the last N bar values from the 
         latest_symbol list, or N-k if less available.
         """
+        # 将指定股票的latest_symbol_data中的最后N行指定val_type的值返回
         try:
             bars_list = self.get_latest_bars(symbol, N)
         except KeyError:
@@ -217,6 +229,8 @@ class HistoricCSVDataHandler(DataHandler):
         Pushes the latest bar to the latest_symbol_data structure
         for all symbols in the symbol list.
         """
+        # 将symbol_data中的数据取出放入latest_symbol_data中
+        # 同时添加一个market事件
         for s in self.symbol_list:
             try:
                 bar = next(self._get_new_bar(s))

@@ -48,7 +48,7 @@ class MovingAverageCrossStrategy(Strategy):
     windows are 100/400 periods respectively.
     """
 
-    def __init__(self, bars, events, short_window=100, long_window=400):
+    def __init__(self, data_handler, events, short_window=100, long_window=400):
         """
         Initialises the buy and hold strategy.
 
@@ -58,13 +58,14 @@ class MovingAverageCrossStrategy(Strategy):
         short_window - The short moving average lookback.
         long_window - The long moving average lookback.
         """
-        self.bars = bars
-        self.symbol_list = self.bars.symbol_list
+        self.data_handler = data_handler
+        self.symbol_list = self.data_handler.symbol_list
         self.events = events
         self.short_window = short_window
         self.long_window = long_window
 
         # Set to True if a symbol is in the market
+        # Todo:_calculate_initial_bought的目的是？去掉会有什么影响？
         self.bought = self._calculate_initial_bought()
 
     def _calculate_initial_bought(self):
@@ -88,13 +89,13 @@ class MovingAverageCrossStrategy(Strategy):
         """
         if event.type == 'MARKET':
             for symbol in self.symbol_list:
-                bars = self.bars.get_latest_bars_values(symbol, "close", N=self.long_window)
+                bars = self.data_handler.get_latest_bars_values(symbol, "close", N=self.long_window)
 
                 if bars is not None and bars != []:
                     short_sma = np.mean(bars[-self.short_window:])
                     long_sma = np.mean(bars[-self.long_window:])
 
-                    dt = self.bars.get_latest_bar_datetime(symbol)
+                    dt = self.data_handler.get_latest_bar_datetime(symbol)
                     sig_dir = ""
                     strength = 1.0
                     strategy_id = 1

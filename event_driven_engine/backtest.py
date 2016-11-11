@@ -83,6 +83,9 @@ class Backtest(object):
             print(i)
             # Update the market bars
             if self.data_handler.continue_backtest == True:
+                # 在历史数据中，从后向前，将单独的一天数据也就是bar（OHLC等值），存入到latest_symbol_data中，
+                # 同时放入一个market event
+                # 如果历史数据都取完了，那么就跳出循环,run_backtest结束
                 self.data_handler.update_bars()
             else:
                 break
@@ -95,6 +98,7 @@ class Backtest(object):
                     break
                 else:
                     if event is not None:
+                        # Todo:4个event区别？
                         if event.type == 'MARKET':
                             self.strategy.calculate_signals(event)
                             self.portfolio.update_timeindex(event)
